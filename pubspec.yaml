@@ -62,6 +62,7 @@ flutter:
     - content/images/login/login-bg.png
     - content/images/dashboard/atlas.png
     - content/images/dashboard/plus.png
+    - content/images/dashboard/profile.avif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
