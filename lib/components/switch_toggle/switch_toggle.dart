@@ -31,16 +31,16 @@ class _SwitchToggleState extends State<SwitchToggle> {
   Widget build(BuildContext context) {
     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
       Transform.scale(
-          scale: 1,
-          child: Switch(
-            onChanged: toggleSwitch,
-            value: isSwitched,
-            activeColor: Colors.blue,
-            activeTrackColor: Colors.yellow,
-            inactiveThumbColor: Colors.redAccent,
-            inactiveTrackColor: Colors.orange,
-          )),
-      Text('Toggle'),
+        scale: 1,
+        child: Switch(
+          onChanged: toggleSwitch,
+          value: isSwitched,
+          activeColor: Colors.blue,
+          activeTrackColor: Colors.blue,
+          inactiveThumbColor: Colors.blue,
+          inactiveTrackColor: Colors.grey,
+        ),
+      ),
     ]);
   }
 }

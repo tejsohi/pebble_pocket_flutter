@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pebble_pocket_flutter/services/login/login_web_view.dart';
+import 'package:pebble_pocket_flutter/components/login/login_web_view.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
