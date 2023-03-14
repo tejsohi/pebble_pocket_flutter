@@ -14,6 +14,7 @@ class _SideBarState extends State<SideBar> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      width: 200,
       child: ListView(
         children: [
           SizedBox(

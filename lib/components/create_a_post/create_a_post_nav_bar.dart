@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pebble_pocket_flutter/components/create_a_post/dialogs/add_hours_dialog.dart';
+import 'package:pebble_pocket_flutter/components/create_a_post/dialogs/add_points_dialog.dart';
+import 'package:pebble_pocket_flutter/components/create_a_post/dialogs/add_tags_dialog.dart';
 
 class CreateAPostNavBar extends StatefulWidget {
   @override
@@ -8,11 +10,6 @@ class CreateAPostNavBar extends StatefulWidget {
 
 class _CreateAPostNavBarState extends State<CreateAPostNavBar> {
   int _selectedIndex = -1;
-
-  // switch(_selectedIndex) {
-  //   case 0:
-
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +43,36 @@ class _CreateAPostNavBarState extends State<CreateAPostNavBar> {
           _selectedIndex = index;
         });
 
-        // Navigator.push(
-        //     context, MaterialPageRoute(builder: (context) => AddHoursDialog()));
-        Navigator.of(context).push(
-          PageRouteBuilder(
-              pageBuilder: (context, _, __) => AddHoursDialog(), opaque: false),
-        );
+        switch (_selectedIndex) {
+          case 0:
+            Navigator.of(
+              context,
+            ).push(
+              PageRouteBuilder(
+                  pageBuilder: (context, _, __) => AddHoursDialog(),
+                  opaque: false),
+            );
+            break;
+          case 1:
+            Navigator.of(
+              context,
+            ).push(
+              PageRouteBuilder(
+                  pageBuilder: (context, _, __) => AddPointsDialog(),
+                  opaque: false),
+            );
+            break;
+          case 2:
+            Navigator.of(
+              context,
+            ).push(
+              PageRouteBuilder(
+                  pageBuilder: (context, _, __) => AddTagsDialog(),
+                  opaque: false),
+            );
+            break;
+          default:
+        }
       },
     );
   }

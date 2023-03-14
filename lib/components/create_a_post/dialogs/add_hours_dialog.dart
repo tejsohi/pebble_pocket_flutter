@@ -164,7 +164,7 @@ class _AddHoursDialogState extends State<AddHoursDialog> {
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

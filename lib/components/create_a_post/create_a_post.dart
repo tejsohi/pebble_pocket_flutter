@@ -16,6 +16,20 @@ class _CreateAPostState extends State<CreateAPost> {
         appBar: AppBar(
           title: Text('Post'),
           backgroundColor: Color(0xFF474d55),
+          actions: [
+            TextButton(
+              onPressed: () {},
+              style: ButtonStyle(
+                textStyle: MaterialStateProperty.all(
+                  TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              child: Text('Send'),
+            ),
+          ],
         ),
         body: SingleChildScrollView(
           child: Center(
