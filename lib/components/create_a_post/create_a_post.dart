@@ -22,8 +22,8 @@ class _CreateAPostState extends State<CreateAPost> {
               style: ButtonStyle(
                 textStyle: MaterialStateProperty.all(
                   TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
+                    foreground: Paint()..color = Colors.white,
+                    fontSize: 20,
                   ),
                 ),
               ),
