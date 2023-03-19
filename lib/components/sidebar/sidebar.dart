@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pebble_pocket_flutter/components/create_a_post/create_a_post.dart';
 import 'package:pebble_pocket_flutter/components/login/login_web_view.dart';
+import 'package:pebble_pocket_flutter/components/my_assets/my_assets.dart';
 import 'package:pebble_pocket_flutter/components/settings/settings.dart';
 
 class SideBar extends StatefulWidget {
@@ -41,17 +42,17 @@ class _SideBarState extends State<SideBar> {
             ),
           ),
           ListTile(
-            title: const Text('Login'),
+            title: const Text('Login (WIP)'),
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => LoginWebView()));
             },
           ),
           ListTile(
-            title: const Text('Asset Store'),
+            title: const Text('Asset Store (WIP)'),
           ),
           ListTile(
-            title: const Text('Resource Store'),
+            title: const Text('Resource Store (WIP)'),
           ),
           ListTile(
             title: const Text('Create a post'),
@@ -61,16 +62,26 @@ class _SideBarState extends State<SideBar> {
             },
           ),
           ListTile(
-            title: const Text('Create a reflection'),
+            title: const Text('Create a reflection (WIP)'),
           ),
           ListTile(
-            title: const Text('Record an experience'),
+            title: const Text('Record an experience (WIP)'),
           ),
           ListTile(
-            title: const Text('Add a photo'),
+            title: const Text('Add a photo (WIP)'),
           ),
           ListTile(
-            title: const Text('Add a video'),
+            title: const Text('Add a video (WIP)'),
+          ),
+          ListTile(
+            title: const Text('My Assets'),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyAssets(),
+                  ));
+            },
           ),
         ],
       ),

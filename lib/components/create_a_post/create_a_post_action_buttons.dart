@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:localstore/localstore.dart';
+import 'package:pebble_pocket_flutter/components/create_a_post/post.dart';
 
 class CreateAPostActionButtons extends StatefulWidget {
-  const CreateAPostActionButtons({
-    super.key,
-  });
+  // final String postTitle;
+  // final String postContent;
+  final Post post;
+  CreateAPostActionButtons({required this.post});
 
   @override
   State<CreateAPostActionButtons> createState() =>
@@ -11,6 +14,19 @@ class CreateAPostActionButtons extends StatefulWidget {
 }
 
 class _CreateAPostActionButtonsState extends State<CreateAPostActionButtons> {
+  Future<void> savePost(postTitle, postContent) async {
+    final db = Localstore.instance;
+    final id = db.collection('post').doc().id;
+
+    db
+        .collection('post')
+        .doc(id)
+        .set({'postTitle': postTitle, 'postContent': postContent});
+
+    print(postTitle + postContent);
+    print('successfull save');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -27,7 +43,9 @@ class _CreateAPostActionButtonsState extends State<CreateAPostActionButtons> {
             ),
           ),
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              savePost(widget.post.postTitle, widget.post.postContent);
+            },
             child: Text('Save to device'),
           ),
         ),
