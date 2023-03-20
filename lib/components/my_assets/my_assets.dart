@@ -1,7 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:localstore/localstore.dart';
+import 'dart:convert';
+import 'dart:io';
 
-//ignore: must_be_immutable
+import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:pebble_pocket_flutter/components/create_a_post/post.dart';
+import 'package:pebble_pocket_flutter/components/create_a_post/post_info.dart';
+import 'package:uuid/uuid.dart';
+
+// ignore: must_be_immutable
 class MyAssets extends StatefulWidget {
   MyAssets({super.key});
 
@@ -10,15 +16,50 @@ class MyAssets extends StatefulWidget {
 }
 
 class _MyAssetsState extends State<MyAssets> {
-  List<Widget> myAssets;
+  final Uuid id;
 
-  _MyAssetsState() : myAssets = <Text>[];
+  _MyAssetsState() : id = Uuid();
+  List<Post> myAssets = [
+    Post(
+      // id: Uuid(),
+      postTitle: "DefaultTitle",
+      postContent: 'DefultContent',
+    ),
+  ];
+
+  // _MyAssetsState() : myAssets = <Post>[];
+
+  Future<String> get _localPath async {
+    final directory = await getApplicationDocumentsDirectory();
+
+    return directory.path;
+  }
+
+  Future<File> get _localFile async {
+    final path = await _localPath;
+    return File('$path/post.json');
+  }
 
   Future<void> loadData() async {
-    final db = Localstore.instance;
-    final items = await db.collection('post').get() as Map<String, dynamic>;
-    print(items.entries.first);
-    myAssets = items.entries.map((e) => Text(e.value.toString())).toList();
+    final file = await _localFile;
+
+    // Read the file
+    final contents = await file.readAsString();
+
+    var postMap = jsonDecode(contents);
+
+    var postInfo = Post.fromJson(postMap);
+
+    setState(() {
+      myAssets.add(Post(
+          // id: Uuid(),
+          postTitle: postInfo.postTitle,
+          postContent: postInfo.postContent));
+    });
+
+    for (var asset in myAssets) {
+      print(asset.postTitle);
+    }
   }
 
   @override
@@ -48,27 +89,10 @@ class _MyAssetsState extends State<MyAssets> {
           ),
         ],
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(15, 15, 15, 15),
-            child: Text(
-              'Assets stored on this device',
-              style: TextStyle(fontSize: 18),
-            ),
-          ),
-          Divider(
-            height: 0,
-            thickness: 1,
-            indent: 0,
-            endIndent: 0,
-            color: Colors.grey,
-          ),
-          Row(
-            children: myAssets,
-          )
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: myAssets.map((post) => PostInfo(post: post)).toList(),
+        ),
       ),
     );
   }

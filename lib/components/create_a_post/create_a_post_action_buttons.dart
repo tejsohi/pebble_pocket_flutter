@@ -1,5 +1,8 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:localstore/localstore.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:pebble_pocket_flutter/components/create_a_post/post.dart';
 
 class CreateAPostActionButtons extends StatefulWidget {
@@ -14,17 +17,21 @@ class CreateAPostActionButtons extends StatefulWidget {
 }
 
 class _CreateAPostActionButtonsState extends State<CreateAPostActionButtons> {
-  Future<void> savePost(postTitle, postContent) async {
-    final db = Localstore.instance;
-    final id = db.collection('post').doc().id;
+  Future<String> get _localPath async {
+    final directory = await getApplicationDocumentsDirectory();
 
-    db
-        .collection('post')
-        .doc(id)
-        .set({'postTitle': postTitle, 'postContent': postContent});
+    return directory.path;
+  }
 
-    print(postTitle + postContent);
-    print('successfull save');
+  Future<File> get _localFile async {
+    final path = await _localPath;
+    return File('$path/post.json');
+  }
+
+  Future<void> savePost(Post post) async {
+    final file = await _localFile;
+
+    file.writeAsStringSync(jsonEncode('$post,'), mode: FileMode.append);
   }
 
   @override
@@ -44,7 +51,7 @@ class _CreateAPostActionButtonsState extends State<CreateAPostActionButtons> {
           ),
           child: ElevatedButton(
             onPressed: () {
-              savePost(widget.post.postTitle, widget.post.postContent);
+              savePost(widget.post);
             },
             child: Text('Save to device'),
           ),
