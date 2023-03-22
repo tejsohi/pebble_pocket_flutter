@@ -99,7 +99,7 @@ class _CreateAPostState extends State<CreateAPost> {
                 color: Colors.grey,
               ),
               SizedBox(height: 30.00),
-              CreateAPostActionButtons(post: post),
+              CreateAPostActionButtons(),
             ],
           ),
         ),

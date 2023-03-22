@@ -1,15 +1,7 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:pebble_pocket_flutter/components/create_a_post/post.dart';
 
 class CreateAPostActionButtons extends StatefulWidget {
-  // final String postTitle;
-  // final String postContent;
-  final Post post;
-  CreateAPostActionButtons({required this.post});
+  CreateAPostActionButtons({super.key});
 
   @override
   State<CreateAPostActionButtons> createState() =>
@@ -17,22 +9,7 @@ class CreateAPostActionButtons extends StatefulWidget {
 }
 
 class _CreateAPostActionButtonsState extends State<CreateAPostActionButtons> {
-  Future<String> get _localPath async {
-    final directory = await getApplicationDocumentsDirectory();
-
-    return directory.path;
-  }
-
-  Future<File> get _localFile async {
-    final path = await _localPath;
-    return File('$path/post.json');
-  }
-
-  Future<void> savePost(Post post) async {
-    final file = await _localFile;
-
-    file.writeAsStringSync(jsonEncode('$post,'), mode: FileMode.append);
-  }
+  Future<void> savePost() async {}
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +28,7 @@ class _CreateAPostActionButtonsState extends State<CreateAPostActionButtons> {
           ),
           child: ElevatedButton(
             onPressed: () {
-              savePost(widget.post);
+              savePost();
             },
             child: Text('Save to device'),
           ),
