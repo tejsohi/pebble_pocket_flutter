@@ -25,16 +25,16 @@ class PostInfo extends StatelessWidget {
               'Created: Friday at 00:00pm',
               style: TextStyle(fontSize: 12),
             ),
+            Divider(
+              height: 0,
+              thickness: 1,
+              indent: 5,
+              endIndent: 5,
+              color: Colors.grey,
+            ),
           ],
         ),
       ],
     );
-    // Divider(
-    //   height: 0,
-    //   thickness: 1,
-    //   indent: 5,
-    //   endIndent: 5,
-    //   color: Colors.grey,
-    // ),
   }
 }

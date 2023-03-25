@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pebble_pocket_flutter/components/create_a_post/create_a_post_action_buttons.dart';
 import 'package:pebble_pocket_flutter/components/create_a_post/create_a_post_nav_bar.dart';
 import 'package:pebble_pocket_flutter/components/create_a_post/post.dart';
-import 'package:uuid/uuid.dart';
 
 //ignore: must_be_immutable
 class CreateAPost extends StatefulWidget {
@@ -15,12 +14,15 @@ class CreateAPost extends StatefulWidget {
 class _CreateAPostState extends State<CreateAPost> {
   var postTitleController = TextEditingController();
   var postContentController = TextEditingController();
-  final Uuid id;
   final Post post;
 
   _CreateAPostState()
-      : id = Uuid(),
-        post = Post(postTitle: "New Post", postContent: "");
+      : post = Post(
+          id: '',
+          postTitle: "New Post",
+          postContent: "",
+          // mainType: 'Post',
+        );
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +101,9 @@ class _CreateAPostState extends State<CreateAPost> {
                 color: Colors.grey,
               ),
               SizedBox(height: 30.00),
-              CreateAPostActionButtons(),
+              CreateAPostActionButtons(
+                post: post,
+              ),
             ],
           ),
         ),

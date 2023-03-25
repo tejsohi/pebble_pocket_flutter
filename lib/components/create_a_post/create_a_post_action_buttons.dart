@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:pebble_pocket_flutter/components/create_a_post/post.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:uuid/uuid.dart';
 
 class CreateAPostActionButtons extends StatefulWidget {
-  CreateAPostActionButtons({super.key});
+  final Post post;
+
+  CreateAPostActionButtons({required this.post});
 
   @override
   State<CreateAPostActionButtons> createState() =>
@@ -9,7 +14,23 @@ class CreateAPostActionButtons extends StatefulWidget {
 }
 
 class _CreateAPostActionButtonsState extends State<CreateAPostActionButtons> {
-  Future<void> savePost() async {}
+  Future<void> savePost(Post post) async {
+    //Generate new ID
+    var id = Uuid().v4().toString();
+    post.id = id;
+
+    //Initiate Local storage
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var existingPostData = prefs.getString('post')!;
+
+    //Get existing values from Local storage and add new stuff
+    List<Post> posts = Post.decode(existingPostData);
+    posts.add(post);
+
+    //Add new stuff back to local storage
+    final String encodedData = Post.encode(posts);
+    prefs.setString('post', encodedData);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +49,7 @@ class _CreateAPostActionButtonsState extends State<CreateAPostActionButtons> {
           ),
           child: ElevatedButton(
             onPressed: () {
-              savePost();
+              savePost(widget.post);
             },
             child: Text('Save to device'),
           ),
