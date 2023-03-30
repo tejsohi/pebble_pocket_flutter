@@ -48,31 +48,41 @@ class _SideBarState extends State<SideBar> {
                   MaterialPageRoute(builder: (context) => LoginWebView()));
             },
           ),
-          ListTile(
-            title: const Text('Asset Store (WIP)'),
+          ExpansionTile(
+            title: Text('Stores'),
+            children: [
+              ListTile(
+                title: const Text('Asset Store (WIP)'),
+              ),
+              ListTile(
+                title: const Text('Resource Store (WIP)'),
+              ),
+            ],
           ),
-          ListTile(
-            title: const Text('Resource Store (WIP)'),
-          ),
-          ListTile(
-            title: const Text('Create a post'),
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CreateAPost()));
-            },
-          ),
-          ListTile(
-            title: const Text('Create a reflection (WIP)'),
-          ),
-          ListTile(
-            title: const Text('Record an experience (WIP)'),
-          ),
-          ListTile(
-            title: const Text('Add a photo (WIP)'),
-          ),
-          ListTile(
-            title: const Text('Add a video (WIP)'),
-          ),
+          ExpansionTile(
+            title: Text('Get Creative'),
+            children: [
+              ListTile(
+                title: const Text('Create a post'),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => CreateAPost()));
+                },
+              ),
+              ListTile(
+                title: const Text('Create a reflection (WIP)'),
+              ),
+              ListTile(
+                title: const Text('Record an experience (WIP)'),
+              ),
+              ListTile(
+                title: const Text('Add a photo (WIP)'),
+              ),
+              ListTile(
+                title: const Text('Add a video (WIP)'),
+              ),
+            ],
+          ),          
           ListTile(
             title: const Text('My Assets'),
             onTap: () {
