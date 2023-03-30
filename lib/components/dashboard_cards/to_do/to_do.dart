@@ -11,7 +11,7 @@ class _ToDoState extends State<ToDo> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Color(0xFFffffff),
+      color: Theme.of(context).cardColor,
       child: Padding(
         padding: const EdgeInsets.all(40.0),
         child: Column(

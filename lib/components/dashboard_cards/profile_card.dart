@@ -11,7 +11,7 @@ class _ProfileCardState extends State<ProfileCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Color(0xFFffffff),
+      color: Theme.of(context).cardColor,
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),

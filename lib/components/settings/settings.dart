@@ -17,7 +17,7 @@ class _SettingsState extends State<Settings> {
         title: Text('Settings'),
         backgroundColor: Color(0xFF474d55),
       ),
-      backgroundColor: Color(0xFFf7f7f7),
+      backgroundColor: Theme.of(context).primaryColor,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -25,9 +25,10 @@ class _SettingsState extends State<Settings> {
             onPressed: () {},
             style: ButtonStyle(
               elevation: MaterialStatePropertyAll(0.00),
-              backgroundColor:
-                  MaterialStateProperty.all<Color>(Color(0xFFf7f7f7)),
-              foregroundColor: MaterialStateProperty.all(Colors.black),
+              backgroundColor: MaterialStateProperty.all<Color>(
+                  Theme.of(context).primaryColor),
+              foregroundColor:
+                  MaterialStateProperty.all(Theme.of(context).dividerColor),
             ),
             child: Text('Account details'),
           ),
@@ -42,9 +43,10 @@ class _SettingsState extends State<Settings> {
             onPressed: () {},
             style: ButtonStyle(
               elevation: MaterialStatePropertyAll(0.00),
-              backgroundColor:
-                  MaterialStateProperty.all<Color>(Color(0xFFf7f7f7)),
-              foregroundColor: MaterialStateProperty.all(Colors.black),
+              backgroundColor: MaterialStateProperty.all<Color>(
+                  Theme.of(context).primaryColor),
+              foregroundColor:
+                  MaterialStateProperty.all(Theme.of(context).dividerColor),
             ),
             child: Text('View sent assets'),
           ),
@@ -59,9 +61,10 @@ class _SettingsState extends State<Settings> {
             onPressed: () {},
             style: ButtonStyle(
               elevation: MaterialStatePropertyAll(0.00),
-              backgroundColor:
-                  MaterialStateProperty.all<Color>(Color(0xFFf7f7f7)),
-              foregroundColor: MaterialStateProperty.all(Colors.black),
+              backgroundColor: MaterialStateProperty.all<Color>(
+                  Theme.of(context).primaryColor),
+              foregroundColor:
+                  MaterialStateProperty.all(Theme.of(context).dividerColor),
             ),
             child: Text('Language'),
           ),
@@ -161,9 +164,10 @@ class _SettingsState extends State<Settings> {
             onPressed: () {},
             style: ButtonStyle(
               elevation: MaterialStatePropertyAll(0.00),
-              backgroundColor:
-                  MaterialStateProperty.all<Color>(Color(0xFFf7f7f7)),
-              foregroundColor: MaterialStateProperty.all(Colors.black),
+              backgroundColor: MaterialStateProperty.all<Color>(
+                  Theme.of(context).primaryColor),
+              foregroundColor:
+                  MaterialStateProperty.all(Theme.of(context).dividerColor),
             ),
             child: Text('Help with PebblePocket'),
           ),

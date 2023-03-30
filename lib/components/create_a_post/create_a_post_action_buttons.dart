@@ -54,26 +54,22 @@ class _CreateAPostActionButtonsState extends State<CreateAPostActionButtons> {
             child: Text('Save to device'),
           ),
         ),
-        ElevatedButtonTheme(
-          data: ElevatedButtonThemeData(
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(
-                Color(0xFFffffff),
-              ),
-              minimumSize: MaterialStateProperty.all(
-                Size(200, 40),
-              ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          style: ButtonStyle(
+            backgroundColor:
+                MaterialStateProperty.all<Color>(Theme.of(context).cardColor),
+            minimumSize: MaterialStateProperty.all(
+              Size(200, 40),
+            ),
+            side: MaterialStateProperty.all(
+              BorderSide(color: Colors.grey),
             ),
           ),
-          child: ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.black,
-                elevation: 0,
-                side: BorderSide(color: Colors.grey)),
-            child: Text(
-              'Cancel',
-            ),
+          child: Text(
+            'Cancel',
           ),
         ),
       ],

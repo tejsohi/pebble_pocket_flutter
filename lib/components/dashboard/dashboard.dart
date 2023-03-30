@@ -3,6 +3,7 @@ import 'package:pebble_pocket_flutter/components/dashboard_cards/profile_card.da
 import 'package:pebble_pocket_flutter/components/dashboard_cards/whats_happening_card.dart';
 import 'package:pebble_pocket_flutter/components/sidebar/sidebar.dart';
 import 'package:pebble_pocket_flutter/components/dashboard_cards/to_do/to_do.dart';
+import 'package:pebble_pocket_flutter/theme/theme_manager.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -12,6 +13,26 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  ThemeManager themeManager = ThemeManager();
+
+  @override
+  void dispose() {
+    themeManager.removeListener(themeListener);
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    themeManager.addListener(themeListener);
+    super.initState();
+  }
+
+  themeListener() {
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +47,7 @@ class _DashboardState extends State<Dashboard> {
             ToDo(),
           ],
         ),
-        backgroundColor: Color(0xFFf7f7f7),
+        backgroundColor: Theme.of(context).primaryColor,
         drawer: SideBar());
   }
 }

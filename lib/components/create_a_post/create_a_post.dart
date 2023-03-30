@@ -98,7 +98,7 @@ class _CreateAPostState extends State<CreateAPost> {
                 thickness: 0.6,
                 indent: 5,
                 endIndent: 5,
-                color: Colors.grey,
+                color: Theme.of(context).dividerColor,
               ),
               SizedBox(height: 30.00),
               CreateAPostActionButtons(

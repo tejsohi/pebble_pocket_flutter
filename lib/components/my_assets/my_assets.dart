@@ -23,7 +23,7 @@ class _MyAssetsState extends State<MyAssets> {
 
     if (getPrefs.isNotEmpty) {
       List<Post> posts = Post.decode(getPrefs);
-      
+
       setState(() {
         if (posts.isNotEmpty) {
           for (var post in posts) {
