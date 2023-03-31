@@ -37,6 +37,7 @@ dependencies:
   webview_flutter: ^4.0.5
   uuid: ^3.0.7
   shared_preferences: ^2.0.20
+  fluttertoast: ^8.2.1
 
 dev_dependencies:
   flutter_test:

@@ -65,8 +65,10 @@ class _SideBarState extends State<SideBar> {
               ListTile(
                 title: const Text('Create a post'),
                 onTap: () {
+                  Navigator.pop(context);
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => CreateAPost()));
+
                 },
               ),
               ListTile(

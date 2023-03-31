@@ -1,7 +1,10 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:pebble_pocket_flutter/components/create_a_post/post.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class CreateAPostActionButtons extends StatefulWidget {
   final Post post;
@@ -40,6 +43,16 @@ class _CreateAPostActionButtonsState extends State<CreateAPostActionButtons> {
       final String multplieEncodedData = Post.encode(posts);
       prefs.setString('post', multplieEncodedData);
     }
+
+    Fluttertoast.showToast(
+      msg: 'Your Post has been saved. Remeber to send to Pebble+ when complete',
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 2,
+      backgroundColor: Colors.grey,
+      textColor: Colors.white,
+      fontSize: 15
+    );
   }
 
   @override
@@ -60,6 +73,7 @@ class _CreateAPostActionButtonsState extends State<CreateAPostActionButtons> {
           child: ElevatedButton(
             onPressed: () {
               savePost(widget.post);
+              Navigator.pop(context);
             },
             child: Text('Save to device'),
           ),
