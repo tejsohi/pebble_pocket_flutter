@@ -27,8 +27,8 @@ class _SettingsState extends State<Settings> {
               elevation: MaterialStatePropertyAll(0.00),
               backgroundColor: MaterialStateProperty.all<Color>(
                   Theme.of(context).primaryColor),
-              foregroundColor:
-                  MaterialStateProperty.all(Theme.of(context).dividerColor),
+              foregroundColor: MaterialStateProperty.all(
+                  Theme.of(context).secondaryHeaderColor),
             ),
             child: Text('Account details'),
           ),
@@ -45,8 +45,8 @@ class _SettingsState extends State<Settings> {
               elevation: MaterialStatePropertyAll(0.00),
               backgroundColor: MaterialStateProperty.all<Color>(
                   Theme.of(context).primaryColor),
-              foregroundColor:
-                  MaterialStateProperty.all(Theme.of(context).dividerColor),
+              foregroundColor: MaterialStateProperty.all(
+                  Theme.of(context).secondaryHeaderColor),
             ),
             child: Text('View sent assets'),
           ),
@@ -63,8 +63,8 @@ class _SettingsState extends State<Settings> {
               elevation: MaterialStatePropertyAll(0.00),
               backgroundColor: MaterialStateProperty.all<Color>(
                   Theme.of(context).primaryColor),
-              foregroundColor:
-                  MaterialStateProperty.all(Theme.of(context).dividerColor),
+              foregroundColor: MaterialStateProperty.all<Color>(
+                  Theme.of(context).secondaryHeaderColor),
             ),
             child: Text('Language'),
           ),
@@ -166,8 +166,8 @@ class _SettingsState extends State<Settings> {
               elevation: MaterialStatePropertyAll(0.00),
               backgroundColor: MaterialStateProperty.all<Color>(
                   Theme.of(context).primaryColor),
-              foregroundColor:
-                  MaterialStateProperty.all(Theme.of(context).dividerColor),
+              foregroundColor: MaterialStateProperty.all(
+                  Theme.of(context).secondaryHeaderColor),
             ),
             child: Text('Help with PebblePocket'),
           ),
