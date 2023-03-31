@@ -21,15 +21,25 @@ class _CreateAPostActionButtonsState extends State<CreateAPostActionButtons> {
 
     //Initiate Local storage
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    var existingPostData = prefs.getString('post')!;
 
-    //Get existing values from Local storage and add new stuff
-    List<Post> posts = Post.decode(existingPostData);
-    posts.add(post);
+    //get exising posts if there are any otherwise return null.
+    // var existingPostData = '';
+    var existingPostData = prefs.getString('post');
+    print(existingPostData);
 
-    //Add new stuff back to local storage
-    final String encodedData = Post.encode(posts);
-    prefs.setString('post', encodedData);
+    if (existingPostData == null) {
+      List<Post> posts = [];
+      posts.add(post);
+
+      final String encodedData = Post.encode(posts);
+      prefs.setString('post', encodedData);
+    } else {
+      List<Post> posts = Post.decode(existingPostData);
+      posts.add(post);
+
+      final String multplieEncodedData = Post.encode(posts);
+      prefs.setString('post', multplieEncodedData);
+    }
   }
 
   @override

@@ -18,6 +18,7 @@ class _MyAssetsState extends State<MyAssets> {
   _MyAssetsState() : assets = Assets(posts: []);
 
   Future<void> loadPosts() async {
+    print('loading Posts');
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String getPrefs = prefs.getString('post') ?? '';
 
@@ -35,6 +36,7 @@ class _MyAssetsState extends State<MyAssets> {
   }
 
   checkIfAnyAssets() {
+    print('checking if any assets in posts list');
     if (assets.posts.isNotEmpty) {
       return assets.posts.map((post) {
         PostInfo(post: post);
@@ -92,7 +94,19 @@ class _MyAssetsState extends State<MyAssets> {
             color: Colors.grey,
           ),
           Column(
-            children: [checkIfAnyAssets()],
+            children: [
+              if (assets.posts.isNotEmpty) ...[
+                for (var post in assets.posts) PostInfo(post: post),
+              ] else ...[
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Text(
+                    'You have no assets',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                )
+              ]
+            ],
           ),
         ],
       ),

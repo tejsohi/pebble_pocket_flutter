@@ -42,6 +42,8 @@ class Post {
         posts.map<Map<String, dynamic>>((post) => Post.toMap(post)).toList(),
       );
 
+
+
   static List<Post> decode(String posts) =>
       (json.decode(posts) as List<dynamic>)
           .map<Post>((item) => Post.fromJson(item))

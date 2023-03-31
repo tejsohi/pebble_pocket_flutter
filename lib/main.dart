@@ -4,7 +4,6 @@ import 'package:pebble_pocket_flutter/theme/theme_contants.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
   runApp(MaterialApp(
     theme: lightTheme,
     darkTheme: darkTheme,
