@@ -3,7 +3,7 @@ import 'package:pebble_pocket_flutter/components/create_a_post/create_a_post_act
 import 'package:pebble_pocket_flutter/components/create_a_post/create_a_post_nav_bar.dart';
 import 'package:pebble_pocket_flutter/components/create_a_post/post.dart';
 
-//ignore: must_be_immutable
+// ignore: must_be_immutable
 class CreateAPost extends StatefulWidget {
   CreateAPost({super.key});
 
@@ -21,7 +21,8 @@ class _CreateAPostState extends State<CreateAPost> {
           id: '',
           postTitle: "New Post",
           postContent: "",
-          // mainType: 'Post',
+          mainType: 'Post',
+          created: DateTime.now().toUtc(),
         );
 
   @override

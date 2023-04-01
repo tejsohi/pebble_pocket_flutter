@@ -1,10 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:pebble_pocket_flutter/components/create_a_post/post.dart';
+import 'package:intl/intl.dart';
 
 class PostInfo extends StatelessWidget {
   final Post post;
 
   PostInfo({required this.post});
+
+  String getDayOfMonthSuffix(int dayNum) {
+    if (!(dayNum >= 1 && dayNum <= 31)) {
+      throw Exception('Invalid day of month');
+    }
+
+    if (dayNum >= 11 && dayNum <= 13) {
+      return 'th';
+    }
+
+    switch (dayNum % 10) {
+      case 1:
+        return 'st';
+      case 2:
+        return 'nd';
+      case 3:
+        return 'rd';
+      default:
+        return 'th';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +45,16 @@ class PostInfo extends StatelessWidget {
                   post.postTitle,
                   style: TextStyle(fontSize: 18),
                 ),
-                Text(
-                  'Created: Friday at 00:00pm',
-                  style: TextStyle(fontSize: 12),
-                ),
+                if (post.created.day == DateTime.now().day) ...[
+                  Text(
+                      'Created: Today at ${DateFormat.jm().format(post.created)}'),
+                ] else if (post.created.day == DateTime.now().day - 1) ...[
+                  Text(
+                      'Created: Yesterday at ${DateFormat.jm().format(post.created)}'),
+                ] else ...[
+                  Text(
+                      'Created: ${DateFormat('EEEE').format(post.created)} ${DateFormat('d').format(post.created)}${getDayOfMonthSuffix(post.created.day)} at ${DateFormat.jm().format(post.created)}'),
+                ]
               ],
             ),
           ],

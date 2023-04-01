@@ -35,23 +35,6 @@ class _MyAssetsState extends State<MyAssets> {
     }
   }
 
-  checkIfAnyAssets() {
-    print('checking if any assets in posts list');
-    if (assets.posts.isNotEmpty) {
-      return assets.posts.map((post) {
-        PostInfo(post: post);
-      }).toList();
-    }
-
-    return Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: Text(
-        'You have no assets',
-        style: TextStyle(fontSize: 20),
-      ),
-    );
-  }
-
   @override
   void initState() {
     super.initState();
