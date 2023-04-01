@@ -8,6 +8,10 @@ class AddHoursDialog extends StatefulWidget {
 }
 
 class _AddHoursDialogState extends State<AddHoursDialog> {
+  var hoursController = TextEditingController();
+  var minutesController = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -46,6 +50,9 @@ class _AddHoursDialogState extends State<AddHoursDialog> {
                     ),
                     Flexible(
                       child: TextField(
+                        onChanged: (value) {
+                          
+                        },
                         textAlign: TextAlign.center,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(

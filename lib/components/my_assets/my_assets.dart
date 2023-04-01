@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pebble_pocket_flutter/components/create_a_post/post_info.dart';
 import 'package:pebble_pocket_flutter/components/my_assets/assets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../create_a_post/post.dart';
+import '../create_a_post/models/post.dart';
 
 // ignore: must_be_immutable
 class MyAssets extends StatefulWidget {
@@ -21,6 +21,7 @@ class _MyAssetsState extends State<MyAssets> {
     print('loading Posts');
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String getPrefs = prefs.getString('post') ?? '';
+    print(getPrefs);
 
     if (getPrefs.isNotEmpty) {
       List<Post> posts = Post.decode(getPrefs);

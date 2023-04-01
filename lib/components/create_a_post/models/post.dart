@@ -1,8 +1,5 @@
 import 'dart:convert';
-
-Post postModelFromJson(String str) => Post.fromJson(jsonDecode(str));
-
-postModelToJson(List<Post> posts) => jsonEncode(posts);
+import 'package:pebble_pocket_flutter/components/create_a_post/models/hours.dart';
 
 class Post {
   String id;
@@ -10,6 +7,7 @@ class Post {
   String postContent;
   String mainType;
   DateTime created;
+  Hours hours;
 
   Post({
     required this.id,
@@ -17,6 +15,7 @@ class Post {
     required this.postContent,
     required this.mainType,
     required this.created,
+    required this.hours,
   });
 
   factory Post.fromJson(Map<String, dynamic> json) => Post(
@@ -25,15 +24,8 @@ class Post {
         postContent: json['postContent'],
         mainType: json['mainType'],
         created: DateTime.tryParse(json['created']) as DateTime,
+        hours: Hours.fromJson(json['hours']),
       );
-
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'postTitle': postTitle,
-        'postContent': postContent,
-        'mainTpye': mainType,
-        'created': created,
-      };
 
   static Map<String, dynamic> toMap(Post post) => {
         'id': post.id,
@@ -41,6 +33,7 @@ class Post {
         'postContent': post.postContent,
         'mainType': post.mainType,
         'created': post.created.toString(),
+        'hours': post.hours.toJson(),
       };
 
   static String encode(List<Post> posts) => json.encode(

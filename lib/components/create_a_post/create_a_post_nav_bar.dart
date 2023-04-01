@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pebble_pocket_flutter/components/create_a_post/dialogs/add_hours_dialog.dart';
-import 'package:pebble_pocket_flutter/components/create_a_post/dialogs/add_points_dialog.dart';
-import 'package:pebble_pocket_flutter/components/create_a_post/dialogs/add_tags_dialog.dart';
+import 'package:pebble_pocket_flutter/components/create_a_post/dialogs/add_hours_dialog/add_hours_dialog.dart';
+import 'package:pebble_pocket_flutter/components/create_a_post/dialogs/add_points_dialog/add_points_dialog.dart';
+import 'package:pebble_pocket_flutter/components/create_a_post/dialogs/add_tags_dialog/add_tags_dialog.dart';
 
 class CreateAPostNavBar extends StatefulWidget {
   @override

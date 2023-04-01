@@ -1,4 +1,4 @@
-import '../create_a_post/post.dart';
+import '../create_a_post/models/post.dart';
 
 class Assets {
   List<Post> posts = [];

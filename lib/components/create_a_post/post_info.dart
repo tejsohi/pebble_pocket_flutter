@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pebble_pocket_flutter/components/create_a_post/post.dart';
+import 'package:pebble_pocket_flutter/components/create_a_post/models/post.dart';
 import 'package:intl/intl.dart';
 
 class PostInfo extends StatelessWidget {
@@ -28,6 +28,17 @@ class PostInfo extends StatelessWidget {
     }
   }
 
+  Widget getDate() {
+    if (post.created.day == DateTime.now().day) {
+      return Text('Created: Today at ${DateFormat.jm().format(post.created)}');
+    } else if (post.created.day == DateTime.now().day - 1) {
+      return Text(
+          'Created: Yesterday at ${DateFormat.jm().format(post.created)}');
+    }
+    return Text(
+        'Created: ${DateFormat('EEEE').format(post.created)} ${DateFormat('d').format(post.created)}${getDayOfMonthSuffix(post.created.day)} at ${DateFormat.jm().format(post.created)}');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -45,16 +56,8 @@ class PostInfo extends StatelessWidget {
                   post.postTitle,
                   style: TextStyle(fontSize: 18),
                 ),
-                if (post.created.day == DateTime.now().day) ...[
-                  Text(
-                      'Created: Today at ${DateFormat.jm().format(post.created)}'),
-                ] else if (post.created.day == DateTime.now().day - 1) ...[
-                  Text(
-                      'Created: Yesterday at ${DateFormat.jm().format(post.created)}'),
-                ] else ...[
-                  Text(
-                      'Created: ${DateFormat('EEEE').format(post.created)} ${DateFormat('d').format(post.created)}${getDayOfMonthSuffix(post.created.day)} at ${DateFormat.jm().format(post.created)}'),
-                ]
+                SizedBox(height: 1),
+                getDate(),
               ],
             ),
           ],

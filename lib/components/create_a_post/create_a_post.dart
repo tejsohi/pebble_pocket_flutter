@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pebble_pocket_flutter/components/create_a_post/create_a_post_action_buttons.dart';
 import 'package:pebble_pocket_flutter/components/create_a_post/create_a_post_nav_bar.dart';
-import 'package:pebble_pocket_flutter/components/create_a_post/post.dart';
+import 'package:pebble_pocket_flutter/components/create_a_post/models/hours.dart';
+import 'package:pebble_pocket_flutter/components/create_a_post/models/post.dart';
 
 // ignore: must_be_immutable
 class CreateAPost extends StatefulWidget {
@@ -23,6 +24,7 @@ class _CreateAPostState extends State<CreateAPost> {
           postContent: "",
           mainType: 'Post',
           created: DateTime.now().toUtc(),
+          hours: Hours(hours: '0', minutes: '0'),
         );
 
   @override

@@ -1,7 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:pebble_pocket_flutter/components/create_a_post/post.dart';
+import 'package:pebble_pocket_flutter/components/create_a_post/models/post.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 import 'package:fluttertoast/fluttertoast.dart';
