@@ -13,8 +13,6 @@ class CreateAPost extends StatefulWidget {
 }
 
 class _CreateAPostState extends State<CreateAPost> {
-  var postTitleController = TextEditingController();
-  var postContentController = TextEditingController();
   final Post post;
 
   _CreateAPostState()
@@ -65,7 +63,6 @@ class _CreateAPostState extends State<CreateAPost> {
                 padding: const EdgeInsets.fromLTRB(20, 2, 20, 0),
                 child: TextField(
                   onChanged: (value) => {post.postTitle = value},
-                  controller: postTitleController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'New Post',
@@ -86,7 +83,6 @@ class _CreateAPostState extends State<CreateAPost> {
                 padding: const EdgeInsets.fromLTRB(20, 2, 20, 0),
                 child: TextFormField(
                   onChanged: (value) => {post.postContent = value},
-                  controller: postContentController,
                   minLines: 1,
                   maxLines: null,
                   keyboardType: TextInputType.multiline,

@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:pebble_pocket_flutter/components/create_a_post/models/hours.dart';
 
 class AddHoursDialog extends StatefulWidget {
-  const AddHoursDialog({super.key});
+  AddHoursDialog({super.key});
 
   @override
   State<AddHoursDialog> createState() => _AddHoursDialogState();
 }
 
 class _AddHoursDialogState extends State<AddHoursDialog> {
-  var hoursController = TextEditingController();
-  var minutesController = TextEditingController();
+  final Hours hours;
+
+  _AddHoursDialogState()
+      : hours = Hours(
+          hours: '0',
+          minutes: '0',
+        );
+
+  saveHours(String hours, String minutes) {
+    setState(() {});
+  }
 
 
   @override
@@ -51,7 +61,7 @@ class _AddHoursDialogState extends State<AddHoursDialog> {
                     Flexible(
                       child: TextField(
                         onChanged: (value) {
-                          
+                          hours.hours = value;
                         },
                         textAlign: TextAlign.center,
                         keyboardType: TextInputType.number,
@@ -96,6 +106,7 @@ class _AddHoursDialogState extends State<AddHoursDialog> {
                     ),
                     Flexible(
                       child: TextField(
+                        onChanged: (value) => hours.minutes = value,
                         textAlign: TextAlign.center,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
@@ -142,7 +153,9 @@ class _AddHoursDialogState extends State<AddHoursDialog> {
                     ),
                   ),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      saveHours(hours.hours, hours.minutes);
+                    },
                     child: Text('Save'),
                   ),
                 ),
