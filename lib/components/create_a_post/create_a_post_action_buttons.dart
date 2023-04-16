@@ -53,6 +53,48 @@ class _CreateAPostActionButtonsState extends State<CreateAPostActionButtons> {
         fontSize: 15);
   }
 
+  Widget determineFinalActionButton() {
+    if (widget.post.id.isNotEmpty) {
+      return ElevatedButton(
+        onPressed: () {
+          //TODO: implement deleting
+        },
+        style: ButtonStyle(
+          backgroundColor:
+              MaterialStateProperty.all<Color>(Theme.of(context).cardColor),
+          minimumSize: MaterialStateProperty.all(
+            Size(200, 40),
+          ),
+          side: MaterialStateProperty.all(
+            BorderSide(color: Colors.grey),
+          ),
+        ),
+        child: Text(
+          'Remove from device',
+        ),
+      );
+    } else {
+      return ElevatedButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        style: ButtonStyle(
+          backgroundColor:
+              MaterialStateProperty.all<Color>(Theme.of(context).cardColor),
+          minimumSize: MaterialStateProperty.all(
+            Size(200, 40),
+          ),
+          side: MaterialStateProperty.all(
+            BorderSide(color: Colors.grey),
+          ),
+        ),
+        child: Text(
+          'Cancel',
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -76,24 +118,7 @@ class _CreateAPostActionButtonsState extends State<CreateAPostActionButtons> {
             child: Text('Save to device'),
           ),
         ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          style: ButtonStyle(
-            backgroundColor:
-                MaterialStateProperty.all<Color>(Theme.of(context).cardColor),
-            minimumSize: MaterialStateProperty.all(
-              Size(200, 40),
-            ),
-            side: MaterialStateProperty.all(
-              BorderSide(color: Colors.grey),
-            ),
-          ),
-          child: Text(
-            'Cancel',
-          ),
-        ),
+        determineFinalActionButton(),
       ],
     );
   }

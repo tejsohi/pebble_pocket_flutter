@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pebble_pocket_flutter/components/create_a_post/edit_a_post.dart';
 import 'package:pebble_pocket_flutter/components/create_a_post/models/post.dart';
 import 'package:intl/intl.dart';
 
@@ -35,32 +36,44 @@ class PostInfo extends StatelessWidget {
       return Text(
           'Created: Yesterday at ${DateFormat.jm().format(post.created)}');
     }
-    return Text(
-        'Created: ${DateFormat('EEEE').format(post.created)} ${DateFormat('d').format(post.created)}${getDayOfMonthSuffix(post.created.day)} at ${DateFormat.jm().format(post.created)}');
+    return Text('Created: ${DateFormat('dd/MM/yyyy').format(post.created)}');
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Image.asset('content/images/icons/post.png'),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  post.postTitle,
-                  style: TextStyle(fontSize: 18),
-                ),
-                SizedBox(height: 1),
-                getDate(),
-              ],
-            ),
-          ],
+        GestureDetector(
+          onTap: () {
+            print('button pressed');
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => EditAPost(
+                          post: post,
+                        )));
+          },
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Image.asset('content/images/icons/post.png'),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    post.postTitle,
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  SizedBox(height: 1),
+                  getDate(),
+                ],
+              ),
+              SizedBox(width: 150),
+              Icon(Icons.navigate_next)
+            ],
+          ),
         ),
         Divider(
           height: 0,
