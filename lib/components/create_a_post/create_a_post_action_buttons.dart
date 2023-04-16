@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:pebble_pocket_flutter/components/create_a_post/models/post.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -45,14 +43,14 @@ class _CreateAPostActionButtonsState extends State<CreateAPostActionButtons> {
     }
 
     Fluttertoast.showToast(
-      msg: 'Your Post has been saved. Remeber to send to Pebble+ when complete',
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 2,
-      backgroundColor: Colors.grey,
-      textColor: Colors.white,
-      fontSize: 15
-    );
+        msg:
+            'Your Post has been saved. Remeber to send to Pebble+ when complete',
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 2,
+        backgroundColor: Colors.grey,
+        textColor: Colors.white,
+        fontSize: 15);
   }
 
   @override

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:pebble_pocket_flutter/components/create_a_post/models/hours.dart';
 
 class AddHoursDialog extends StatefulWidget {
@@ -9,18 +10,22 @@ class AddHoursDialog extends StatefulWidget {
 }
 
 class _AddHoursDialogState extends State<AddHoursDialog> {
-  final Hours hours;
+  final Hours hoursModel;
+  var hoursTextEditingController = TextEditingController();
+  var minutesEditingController = TextEditingController();
 
   _AddHoursDialogState()
-      : hours = Hours(
+      : hoursModel = Hours(
           hours: '0',
           minutes: '0',
         );
 
   saveHours(String hours, String minutes) {
-    setState(() {});
-  }
+    hoursModel.hours = hours;
+    hoursModel.minutes = minutes;
 
+    Navigator.pop(context, hoursModel);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,19 +64,15 @@ class _AddHoursDialogState extends State<AddHoursDialog> {
                       icon: Icon(Icons.remove),
                     ),
                     Flexible(
-                      child: TextField(
-                        onChanged: (value) {
-                          hours.hours = value;
-                        },
-                        textAlign: TextAlign.center,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                        ),
-                        style: TextStyle(fontSize: 14.0),
-                        controller: TextEditingController()..text = '0',
+                        child: TextField(
+                      controller: hoursTextEditingController..text = '0',
+                      textAlign: TextAlign.center,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
                       ),
-                    ),
+                    )),
                     IconButton(
                       onPressed: () {},
                       icon: Icon(Icons.add),
@@ -106,7 +107,7 @@ class _AddHoursDialogState extends State<AddHoursDialog> {
                     ),
                     Flexible(
                       child: TextField(
-                        onChanged: (value) => hours.minutes = value,
+                        onChanged: (value) => hoursModel.minutes = value,
                         textAlign: TextAlign.center,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
@@ -154,7 +155,8 @@ class _AddHoursDialogState extends State<AddHoursDialog> {
                   ),
                   child: ElevatedButton(
                     onPressed: () {
-                      saveHours(hours.hours, hours.minutes);
+                      saveHours(hoursTextEditingController.text,
+                          minutesEditingController.text);
                     },
                     child: Text('Save'),
                   ),

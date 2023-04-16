@@ -3,7 +3,6 @@ import 'package:pebble_pocket_flutter/components/create_a_post/dialogs/add_hours
 import 'package:pebble_pocket_flutter/components/create_a_post/dialogs/add_points_dialog/add_points_dialog.dart';
 import 'package:pebble_pocket_flutter/components/create_a_post/dialogs/add_tags_dialog/add_tags_dialog.dart';
 
-
 class CreateAPostNavBar extends StatefulWidget {
   @override
   State<CreateAPostNavBar> createState() => _CreateAPostNavBarState();
@@ -11,6 +10,40 @@ class CreateAPostNavBar extends StatefulWidget {
 
 class _CreateAPostNavBarState extends State<CreateAPostNavBar> {
   int _selectedIndex = -1;
+  Future<void> displayDialog(index) async {
+    setState(() {
+      _selectedIndex = index;
+    });
+
+    switch (_selectedIndex) {
+      case 0:
+        await Navigator.of(
+          context,
+        ).push(
+          PageRouteBuilder(
+              pageBuilder: (context, _, __) => AddHoursDialog(), opaque: false),
+        );
+        break;
+      case 1:
+        Navigator.of(
+          context,
+        ).push(
+          PageRouteBuilder(
+              pageBuilder: (context, _, __) => AddPointsDialog(),
+              opaque: false),
+        );
+        break;
+      case 2:
+        Navigator.of(
+          context,
+        ).push(
+          PageRouteBuilder(
+              pageBuilder: (context, _, __) => AddTagsDialog(), opaque: false),
+        );
+        break;
+      default:
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,40 +73,7 @@ class _CreateAPostNavBarState extends State<CreateAPostNavBar> {
       ],
       currentIndex: (_selectedIndex != -1) ? _selectedIndex : 0,
       onTap: (index) {
-        setState(() {
-          _selectedIndex = index;
-        });
-
-        switch (_selectedIndex) {
-          case 0:
-            Navigator.of(
-              context,
-            ).push(
-              PageRouteBuilder(
-                  pageBuilder: (context, _, __) => AddHoursDialog(),
-                  opaque: false),
-            );
-            break;
-          case 1:
-            Navigator.of(
-              context,
-            ).push(
-              PageRouteBuilder(
-                  pageBuilder: (context, _, __) => AddPointsDialog(),
-                  opaque: false),
-            );
-            break;
-          case 2:
-            Navigator.of(
-              context,
-            ).push(
-              PageRouteBuilder(
-                  pageBuilder: (context, _, __) => AddTagsDialog(),
-                  opaque: false),
-            );
-            break;
-          default:
-        }
+        displayDialog(index);
       },
     );
   }
