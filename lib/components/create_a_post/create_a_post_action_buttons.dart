@@ -38,26 +38,49 @@ class _CreateAPostActionButtonsState extends State<CreateAPostActionButtons> {
       List<Post> posts = Post.decode(existingPostData);
       posts.add(post);
 
-      final String multplieEncodedData = Post.encode(posts);
-      prefs.setString('post', multplieEncodedData);
+      final String multipleEncodedData = Post.encode(posts);
+      prefs.setString('post', multipleEncodedData);
     }
 
     Fluttertoast.showToast(
-        msg:
-            'Your Post has been saved. Remeber to send to Pebble+ when complete',
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 2,
-        backgroundColor: Colors.grey,
-        textColor: Colors.white,
-        fontSize: 15);
+      msg: 'Your Post has been saved. Remeber to send to Pebble+ when complete',
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 2,
+      backgroundColor: Colors.grey,
+      textColor: Colors.white,
+      fontSize: 15,
+    );
+  }
+
+  Future<void> deletePost() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var existingPostData = prefs.getString('post');
+
+    var newPostData = Post.decode(existingPostData!);
+    newPostData.removeWhere((post) => post.id == widget.post.id);
+
+    final String newPostDataString = Post.encode(newPostData);
+    prefs.setString('post', newPostDataString);
+
+    Fluttertoast.showToast(
+      msg: 'Your Post has been deleted.',
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 2,
+      backgroundColor: Colors.grey,
+      textColor: Colors.white,
+      fontSize: 15,
+    );
   }
 
   Widget determineFinalActionButton() {
     if (widget.post.id.isNotEmpty) {
       return ElevatedButton(
-        onPressed: () {
-          //TODO: implement deleting
+        onPressed: () { 
+          deletePost();
+          Navigator.pop(context);
+          setState(() {});
         },
         style: ButtonStyle(
           backgroundColor:

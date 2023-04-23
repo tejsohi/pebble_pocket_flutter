@@ -3,11 +3,16 @@ import 'package:pebble_pocket_flutter/components/create_a_post/edit_a_post.dart'
 import 'package:pebble_pocket_flutter/components/create_a_post/models/post.dart';
 import 'package:intl/intl.dart';
 
-class PostInfo extends StatelessWidget {
+class PostInfo extends StatefulWidget {
   final Post post;
 
   PostInfo({required this.post});
 
+  @override
+  State<PostInfo> createState() => _PostInfoState();
+}
+
+class _PostInfoState extends State<PostInfo> {
   String getDayOfMonthSuffix(int dayNum) {
     if (!(dayNum >= 1 && dayNum <= 31)) {
       throw Exception('Invalid day of month');
@@ -30,13 +35,15 @@ class PostInfo extends StatelessWidget {
   }
 
   Widget getDate() {
-    if (post.created.day == DateTime.now().day) {
-      return Text('Created: Today at ${DateFormat.jm().format(post.created)}');
-    } else if (post.created.day == DateTime.now().day - 1) {
+    if (widget.post.created.day == DateTime.now().day) {
       return Text(
-          'Created: Yesterday at ${DateFormat.jm().format(post.created)}');
+          'Created: Today at ${DateFormat.jm().format(widget.post.created)}');
+    } else if (widget.post.created.day == DateTime.now().day - 1) {
+      return Text(
+          'Created: Yesterday at ${DateFormat.jm().format(widget.post.created)}');
     }
-    return Text('Created: ${DateFormat('dd/MM/yyyy').format(post.created)}');
+    return Text(
+        'Created: ${DateFormat('dd/MM/yyyy').format(widget.post.created)}');
   }
 
   @override
@@ -44,14 +51,19 @@ class PostInfo extends StatelessWidget {
     return Column(
       children: [
         GestureDetector(
-          onTap: () {
+          onTap: () async {
             print('button pressed');
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => EditAPost(
-                          post: post,
-                        )));
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => EditAPost(
+                  post: widget.post,
+                ),
+              ),
+            );
+            setState(() {
+              widget.post;
+            });
           },
           child: Row(
             children: [
@@ -63,7 +75,7 @@ class PostInfo extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    post.postTitle,
+                    widget.post.postTitle,
                     style: TextStyle(fontSize: 18),
                   ),
                   SizedBox(height: 1),
