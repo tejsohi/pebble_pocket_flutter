@@ -25,7 +25,7 @@ class _AddTagsDialogState extends State<AddTagsDialog> {
                   child: Row(
                     children: [
                       Text(
-                        'Add Hours',
+                        'Add Tags',
                         style: TextStyle(fontSize: 20),
                       ),
                     ],
@@ -36,7 +36,7 @@ class _AddTagsDialogState extends State<AddTagsDialog> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
-                  child: Text('Hours'),
+                  child: Text('Tags'),
                 ),
                 SizedBox(height: 10),
                 Row(
@@ -62,14 +62,19 @@ class _AddTagsDialogState extends State<AddTagsDialog> {
                       style: ButtonStyle(
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(10),
-                            bottomRight: Radius.circular(10),
-                            topLeft: Radius.zero,
-                            bottomLeft: Radius.zero,
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(10),
+                              bottomRight: Radius.circular(10),
+                              topLeft: Radius.zero,
+                              bottomLeft: Radius.zero,
+                            ),
                           ),
-                        )),
+                        ),
+                        backgroundColor:
+                            MaterialStateProperty.all(Color(0xFF0087cd)),
+                        foregroundColor:
+                            MaterialStateProperty.all(Color(0xFFffffff)),
                         elevation: MaterialStateProperty.all(0),
                         minimumSize: MaterialStateProperty.all(
                           Size(60, 56),
@@ -85,11 +90,10 @@ class _AddTagsDialogState extends State<AddTagsDialog> {
             ElevatedButtonTheme(
               data: ElevatedButtonThemeData(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(
-                    Color(0xFFffffff),
-                  ),
+                  backgroundColor: MaterialStateProperty.all(Color(0xFF0087cd)),
+                  elevation: MaterialStateProperty.all(0.0),
                   minimumSize: MaterialStateProperty.all(
-                    Size(40, 40),
+                    Size(60, 40),
                   ),
                 ),
               ),
@@ -97,13 +101,7 @@ class _AddTagsDialogState extends State<AddTagsDialog> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black,
-                    elevation: 0,
-                    side: BorderSide(color: Colors.grey)),
-                child: Text(
-                  'Done',
-                ),
+                child: Text('Done'),
               ),
             ),
           ],

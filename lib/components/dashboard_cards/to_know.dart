@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class WhatsHappening extends StatefulWidget {
-  const WhatsHappening({super.key});
+class ToKnow extends StatefulWidget {
+  const ToKnow({super.key});
 
   @override
-  State<WhatsHappening> createState() => _WhatsHappeningState();
+  State<ToKnow> createState() => _ToKnowState();
 }
 
-class _WhatsHappeningState extends State<WhatsHappening> {
+class _ToKnowState extends State<ToKnow> {
   @override
   Widget build(BuildContext context) {
     return Card(

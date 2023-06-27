@@ -67,6 +67,7 @@ flutter:
     - content/images/dashboard/atlas.png
     - content/images/dashboard/plus.png
     - content/images/dashboard/profile.avif
+    - content/images/dashboard/TejPP.png
     - content/images/icons/post.png
 
   # An image asset can refer to one or more resolution-specific "variants", see

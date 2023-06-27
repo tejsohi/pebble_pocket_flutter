@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pebble_pocket_flutter/components/dashboard_cards/profile_card.dart';
-import 'package:pebble_pocket_flutter/components/dashboard_cards/whats_happening_card.dart';
+import 'package:pebble_pocket_flutter/components/dashboard_cards/to_know.dart';
 import 'package:pebble_pocket_flutter/components/sidebar/sidebar.dart';
 import 'package:pebble_pocket_flutter/components/dashboard_cards/to_do/to_do.dart';
 import 'package:pebble_pocket_flutter/theme/theme_manager.dart';
@@ -43,7 +43,7 @@ class _DashboardState extends State<Dashboard> {
         body: ListView(
           children: [
             ProfileCard(),
-            WhatsHappening(),
+            ToKnow(),
             ToDo(),
           ],
         ),

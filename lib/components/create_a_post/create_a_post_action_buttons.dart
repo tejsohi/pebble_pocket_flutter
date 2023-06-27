@@ -77,7 +77,7 @@ class _CreateAPostActionButtonsState extends State<CreateAPostActionButtons> {
   Widget determineFinalActionButton() {
     if (widget.post.id.isNotEmpty) {
       return ElevatedButton(
-        onPressed: () { 
+        onPressed: () {
           deletePost();
           Navigator.pop(context);
           setState(() {});

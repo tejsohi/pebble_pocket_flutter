@@ -20,8 +20,22 @@ class _ProfileCardState extends State<ProfileCard> {
               Center(
                 child: CircleAvatar(
                   backgroundImage:
-                      AssetImage('content/images/dashboard/profile.avif'),
+                      AssetImage('content/images/dashboard/TejPP.png'),
                   radius: 80,
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Tejvir Sohi',
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+              SizedBox(height: 5),
+              Text(
+                'PebblePad CPD',
+                style: TextStyle(
+                  fontSize: 15,
                 ),
               ),
               SizedBox(height: 10),

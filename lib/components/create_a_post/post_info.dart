@@ -82,7 +82,7 @@ class _PostInfoState extends State<PostInfo> {
                   getDate(),
                 ],
               ),
-              SizedBox(width: 150),
+              Spacer(),
               Icon(Icons.navigate_next)
             ],
           ),
