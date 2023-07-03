@@ -16,17 +16,17 @@ class CreateAPostActionButtons extends StatefulWidget {
 
 class _CreateAPostActionButtonsState extends State<CreateAPostActionButtons> {
   Future<void> savePost(Post post) async {
-    //Generate new ID
-    var id = Uuid().v4().toString();
-    post.id = id;
+    if (post.id.isEmpty) {
+      //Generate new ID
+      var id = Uuid().v4().toString();
+      post.id = id;
+    }
 
     //Initiate Local storage
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     //get exising posts if there are any otherwise return null.
-    // var existingPostData = '';
     var existingPostData = prefs.getString('post');
-    print(existingPostData);
 
     if (existingPostData == null) {
       List<Post> posts = [];
@@ -79,8 +79,7 @@ class _CreateAPostActionButtonsState extends State<CreateAPostActionButtons> {
       return ElevatedButton(
         onPressed: () {
           deletePost();
-          Navigator.pop(context);
-          setState(() {});
+          Navigator.popUntil(context, (route) => route.isFirst);
         },
         style: ButtonStyle(
           backgroundColor:

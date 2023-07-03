@@ -68,7 +68,6 @@ class _SideBarState extends State<SideBar> {
                   Navigator.pop(context);
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => CreateAPost()));
-
                 },
               ),
               ListTile(
@@ -84,10 +83,11 @@ class _SideBarState extends State<SideBar> {
                 title: const Text('Add a video (WIP)'),
               ),
             ],
-          ),          
+          ),
           ListTile(
             title: const Text('My Assets'),
             onTap: () {
+              Navigator.pop(context);
               Navigator.push(
                   context,
                   MaterialPageRoute(

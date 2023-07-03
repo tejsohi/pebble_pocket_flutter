@@ -51,6 +51,7 @@ class _PostInfoState extends State<PostInfo> {
     return Column(
       children: [
         GestureDetector(
+          behavior: HitTestBehavior.translucent,
           onTap: () async {
             print('button pressed');
             await Navigator.push(
